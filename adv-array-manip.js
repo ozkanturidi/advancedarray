@@ -14,13 +14,11 @@ const groupObjectsByKey = (array) => {
 };
 
 const totalValueOfSpecificProp = (array, property) => {
-  if (property === "year" || property === "age") {
+  if (array.length === 0) return 0;
+  const isNumeric = typeof array[0][property] === "number";
+  if (isNumeric) {
     return array.reduce((acc, current) => acc + current[property], 0);
-  } else if (
-    property === "name" ||
-    property === "school" ||
-    property === "department"
-  ) {
+  } else {
     return array.map((obj) => obj[property]).join(" ");
   }
 };
